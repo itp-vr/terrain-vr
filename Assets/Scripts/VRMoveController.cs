@@ -14,6 +14,7 @@ public class VRMoveController : MonoBehaviour
 	private float m_YRotation;
 	private Vector3 groundContactNormal;
 	public float CurrentTargetSpeed = 0f;
+	public bool onGround;
 
 	public Vector3 Velocity {
 		get { return m_RigidBody.velocity; }
@@ -65,10 +66,12 @@ public class VRMoveController : MonoBehaviour
 		                       ((m_Capsule.height/2f) - m_Capsule.radius) + groundCheckDistance))
 		{
 			groundContactNormal = hitInfo.normal;
+			onGround = true;
 		}
 		else
 		{
 			groundContactNormal = Vector3.up;
+			onGround = false;
 		}
 	}
 
